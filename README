@@ -1,0 +1,8 @@
+My dotfiles compilation
+
+GNU stow is used to link all to the $HOME dir
+
+Oh My Zsh (soon to be removed) is a subtree under zsh/oh-my-zsh 
+
+Plug is used for vim extensions.
+
