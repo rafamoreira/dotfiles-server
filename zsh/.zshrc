@@ -48,3 +48,4 @@ bindkey "^N" down-line-or-beginning-search
 # PATH  #
 # # # # #
 export PATH=$HOME/.local/bin:$PATH
+
