@@ -4,3 +4,5 @@ GNU stow is used to link all to the $HOME dir
 
 Plug is used for vim extensions.
 
+zsh grml is used as a base zsh config
+
