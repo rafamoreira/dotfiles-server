@@ -8,7 +8,7 @@
     ("45482e7ddf47ab1f30fe05f75e5f2d2118635f5797687e88571842ff6f18b4d5" "628278136f88aa1a151bb2d6c8a86bf2b7631fbea5f0f76cba2a0079cd910f7d" "06f0b439b62164c6f8f84fdda32b62fb50b6d00e8b01c2208e55543a6337433a" "e11569fd7e31321a33358ee4b232c2d3cf05caccd90f896e1df6cab228191109" "291588d57d863d0394a0d207647d9f24d1a8083bb0c9e8808280b46996f3eb83" default)))
  '(package-selected-packages
    (quote
-    (undo-tree color-theme-sanityinc-tomorrow zenburn-theme moe-theme dracula-theme counsel-projectile counsel ivy projectile molokai-theme color-theme-modern auto-complete ace-window org-bullets which-key try use-package))))
+    (web-mode projectile-rails magit ruby-end toggle-quotes neotree flycheck rubocop undo-tree color-theme-sanityinc-tomorrow zenburn-theme moe-theme dracula-theme counsel-projectile counsel ivy projectile molokai-theme color-theme-modern auto-complete ace-window org-bullets which-key try use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -84,6 +84,22 @@
   :ensure t
   :config (projectile-mode))
 
+(use-package projectile-rails
+  :ensure t
+  :config (projectile-rails-global-mode))
+
+(use-package web-mode
+  :ensure t)
+
+(require 'web-mode)
+(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+
 (use-package ivy
 	     :ensure t)
 
@@ -121,9 +137,9 @@
 
 
 ;; ido configs
-(setq indo-enable-flex-matching t)
-(setq ido-everywhere t)
-(ido-mode 1)
+;;(setq indo-enable-flex-matching t)
+;;(setq ido-everywhere t)
+;;(ido-mode 1)
 
 (defalias 'list-buffers 'ibuffer)
 
@@ -136,6 +152,7 @@
 (column-number-mode 1) ;; show column number
 (save-place-mode 1) ;; remeber cursos position
 (setq backup-directory-alist '(("" . "~/.emacs.d/emacs-backup")))
+(setq auto-save-file-name-transforms '((".*" "~/.emacs.d/emacs-saves" t)))
 (savehist-mode 1) ;; save minibuffer history
 (delete-selection-mode 1) ;; type over selected text
 
@@ -157,3 +174,30 @@
 (global-undo-tree-mode 1)
 (setq undo-tree-auto-save-history t)
 (setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
+
+(use-package rubocop
+  :ensure t)
+(add-hook 'ruby-mode-hook #'rubocop-mode)
+
+(use-package flycheck
+  :ensure t
+  :init (global-flycheck-mode))
+
+(use-package neotree
+  :ensure t)
+
+(global-set-key [f8] 'neotree-toggle)
+
+(use-package toggle-quotes
+  :ensure t)
+
+(global-set-key (kbd "C-;") 'toggle-quotes)
+(global-set-key (kbd "C-'") 'toggle-quotes)
+(setq ruby-insert-encoding-magic-comment nil) ;; stop ruby utf-8 encoding
+
+(use-package ruby-end
+  :ensure t)
+
+(use-package magit
+  :ensure t)
+;;; init.el ends here
