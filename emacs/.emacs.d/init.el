@@ -5,18 +5,16 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    (quote
-    ("45482e7ddf47ab1f30fe05f75e5f2d2118635f5797687e88571842ff6f18b4d5" "628278136f88aa1a151bb2d6c8a86bf2b7631fbea5f0f76cba2a0079cd910f7d" "06f0b439b62164c6f8f84fdda32b62fb50b6d00e8b01c2208e55543a6337433a" "e11569fd7e31321a33358ee4b232c2d3cf05caccd90f896e1df6cab228191109" "291588d57d863d0394a0d207647d9f24d1a8083bb0c9e8808280b46996f3eb83" default)))
+    ("1b8d67b43ff1723960eb5e0cba512a2c7a2ad544ddb2533a90101fd1852b426e" "45482e7ddf47ab1f30fe05f75e5f2d2118635f5797687e88571842ff6f18b4d5" "628278136f88aa1a151bb2d6c8a86bf2b7631fbea5f0f76cba2a0079cd910f7d" "06f0b439b62164c6f8f84fdda32b62fb50b6d00e8b01c2208e55543a6337433a" "e11569fd7e31321a33358ee4b232c2d3cf05caccd90f896e1df6cab228191109" "291588d57d863d0394a0d207647d9f24d1a8083bb0c9e8808280b46996f3eb83" default)))
  '(package-selected-packages
    (quote
     (web-mode projectile-rails magit ruby-end toggle-quotes neotree flycheck rubocop undo-tree color-theme-sanityinc-tomorrow zenburn-theme moe-theme dracula-theme counsel-projectile counsel ivy projectile molokai-theme color-theme-modern auto-complete ace-window org-bullets which-key try use-package))))
-(custom-set-faces
+;;(custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:foreground "#DCDCCC" :background "#3F3F3F"))))
- '(aw-leading-char-face ((t (:inherit ace-jump-face-foreground :height 3.0)))))
-
+;;'(aw-leading-char-face ((t (:inherit ace-jump-face-foreground :height 3.0)))))
 
 (setq inhibit-startup-message t) ;; do not exibit the inicial message
 (tool-bar-mode -1)
@@ -143,7 +141,7 @@
 
 (defalias 'list-buffers 'ibuffer)
 
-(load-theme 'railscast)
+(load-theme 'sanityinc-tomorrow-bright)
 (set-frame-font "Dejavu sans mono 12" nil t)
 (global-hl-line-mode t) ;; hightlight the current line
 (electric-pair-mode 1) ;; auto add matching pair
@@ -151,7 +149,8 @@
 (global-linum-mode 1) ;; show line numbers
 (column-number-mode 1) ;; show column number
 (save-place-mode 1) ;; remeber cursos position
-(setq backup-directory-alist '(("" . "~/.emacs.d/emacs-backup")))
+(setq backup-directory-alist
+      `(("." . ,(concat user-emacs-directory "backups")))) ;; save backups single dir
 (setq auto-save-file-name-transforms '((".*" "~/.emacs.d/emacs-saves" t)))
 (savehist-mode 1) ;; save minibuffer history
 (delete-selection-mode 1) ;; type over selected text
