@@ -93,9 +93,9 @@ command! W	write
 
 " System dependant
 if os == "Linux"
-	set shell=/usr/bin/zsh
+  set shell=/usr/bin/zsh
 else
-	set shell=/usr/local/bin/zsh " This makes RVM work inside Vim. I have no idea why.
+  set shell=/usr/local/bin/zsh " This makes RVM work inside Vim. I have no idea why.
 endif
 
 " MISC KEY MAPS
@@ -115,7 +115,7 @@ map <C-t> :NERDTreeToggle<CR>
 
 " Clear the search buffer when hitting return
 function! MapCR()
-	nnoremap <cr> :nohlsearch<cr>
+  nnoremap <cr> :nohlsearch<cr>
 endfunction
 call MapCR()
 nnoremap <leader><leader> <c-^>
@@ -145,10 +145,10 @@ set lazyredraw
 " REMOVE TRAILING WHITSPACES ON SAVE
 "######################################################
 fun! <SID>StripTrailingWhitespaces()
-	let l = line(".")
-	let c = col(".")
-	%s/\s\+$//e
-	call cursor(l, c)
+  let l = line(".")
+  let c = col(".")
+  %s/\s\+$//e
+  call cursor(l, c)
 endfun
 
 autocmd FileType c,cpp,java,php,ruby,python,eruby autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
@@ -157,9 +157,9 @@ autocmd FileType c,cpp,java,php,ruby,python,eruby autocmd BufWritePre <buffer> :
 " #########################
 
 if exists('+colorcolumn')
-	set colorcolumn=80
+  set colorcolumn=80
 else
-	au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+  au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 endif
 
 """""""""""""""""""""""""""""""""""""""""
@@ -189,30 +189,30 @@ set statusline+=\ %P		"percent through file
 """"""""""""""""""""""
 " filetypes and indentation
 """"""""""""""""""""""
-"set expandtab
+set expandtab
 set ts=2
 set sts=2
 set sw=2
-set noexpandtab
+
 " Only do this part when compiled with support for autocommands
 if has("autocmd")
-	" Enable file type detection
-	filetype on
+  " Enable file type detection
+  filetype on
 
-	" Syntax of these languages is fussy over tabs Vs spaces
-	autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
-	autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-	autocmd FileType python setlocal ts=4 sts=4 sw=4 expandtab
+  " Syntax of these languages is fussy over tabs Vs spaces
+  autocmd FileType make setlocal ts=8 sts=8 sw=8 noexpandtab
+  autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType python setlocal ts=4 sts=4 sw=4 expandtab
 
-	" Customisations based on house-style (arbitrary)
-	autocmd FileType html setlocal ts=2 sts=2 sw=2 noexpandtab 
-	autocmd FileType css setlocal ts=2 sts=2 sw=2 noexpandtab
-	autocmd FileType javascript setlocal ts=2 sts=2 sw=2 noexpandtab
-	autocmd FileType php setlocal ts=4 sts=4 sw=4 noexpandtab
-	
-	autocmd BufNewFile,BufRead *.rss setfiletype xml " Treat .rss files as XML
-	autocmd BufNewFile,BufRead *.arb setfiletype eruby " Treat .arb files as eruby
-	autocmd BufNewFile,BufRead *.conf setfiletype nginx " Treat .conf files as nginx
+  " Customisations based on house-style (arbitrary)
+  autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab 
+  autocmd FileType php setlocal ts=4 sts=4 sw=4 expandtab
+
+  autocmd BufNewFile,BufRead *.rss setfiletype xml " Treat .rss files as XML
+  autocmd BufNewFile,BufRead *.arb setfiletype eruby " Treat .arb files as eruby
+  autocmd BufNewFile,BufRead *.conf setfiletype nginx " Treat .conf files as nginx
 endif
 
 
@@ -233,10 +233,10 @@ let g:UltiSnipsSnippetDirectories=["UltiSnips", "my-snippets"]
 " CtrlP
 "######
 let g:ctrlp_custom_ignore = {
-			\ 'dir':	'\v[\/]\.(git|hg|svn)$',
-			\ 'file': '\v\.(exe|so|dll)$',
-			\ 'link': 'some_bad_symbolic_links',
-			\ }
+      \ 'dir':	'\v[\/]\.(git|hg|svn)$',
+      \ 'file': '\v\.(exe|so|dll)$',
+      \ 'link': 'some_bad_symbolic_links',
+      \ }
 
 let g:ctrlp_working_path_mode = 0
 "
