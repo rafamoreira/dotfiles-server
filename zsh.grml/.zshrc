@@ -1892,13 +1892,13 @@ typeset -A grml_vcs_coloured_formats
 typeset -A grml_vcs_plain_formats
 
 grml_vcs_plain_formats=(
-    format "(%s%)-[%b] "    "zsh: %r"
+    format "[%b%u%c] "    "zsh: %r"
     actionformat "(%s%)-[%b|%a] " "zsh: %r"
     rev-branchformat "%b:%r"
 )
 
 grml_vcs_coloured_formats=(
-    format "${MAGENTA}(${NO_COLOR}%s${MAGENTA})${YELLOW}-${MAGENTA}[${GREEN}%b${MAGENTA}]${NO_COLOR} "
+    format "${MAGENTA}[${GREEN}%b${RED}%u${BLUE}%c${MAGENTA}]${NO_COLOR} "
     actionformat "${MAGENTA}(${NO_COLOR}%s${MAGENTA})${YELLOW}-${MAGENTA}[${GREEN}%b${YELLOW}|${RED}%a${MAGENTA}]${NO_COLOR} "
     rev-branchformat "%b${RED}:${YELLOW}%r"
 )
@@ -1934,6 +1934,10 @@ function grml_vcs_info_set_formats () {
     zstyle ':vcs_info:*'              actionformats "$AF" "zsh: %r"
     zstyle ':vcs_info:*'              formats       "$F"  "zsh: %r"
     zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat  "$BF"
+    zstyle ':vcs_info:*'              check-for-changes true
+    zstyle ':vcs_info:*' unstagedstr '!'
+    zstyle ':vcs_info:*' stagedstr '+'
+# zstyle ':vcs_info:*' formats '[%b]%S%u%c'
     return 0
 }
 
