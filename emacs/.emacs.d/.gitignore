@@ -1,6 +1,9 @@
-auto-save-list
-elpa
-places
-emacs-backups
-network-security.data
-history
+/auto-save-list
+/elpa
+/ac-comphist.dat
+/ido.last
+/projectile-bookmarks.eld
+/emacs-backup
+/undo
+/history
+/places
