@@ -19,6 +19,7 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'felixhummel/setcolors.vim'
 Plug 'tpope/vim-eunuch'
+Plug 'w0rp/ale'
 
 " Initialize plugin system
 call plug#end()
