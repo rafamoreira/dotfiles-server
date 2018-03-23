@@ -5,3 +5,5 @@
 	email = rafael@rafaelmoreira.org
 [alias]
 	po = push origin master
+[github]
+	user = rafamoreira
