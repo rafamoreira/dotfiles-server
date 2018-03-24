@@ -55,9 +55,7 @@ then
 elif [[ $1 == "mate" ]]
 then
 	exec mate-session
-else
-	startxfce4
+elif [[ $1 == "xfce" ]]
+then
+	exec startxfce4
 fi
-
-# terminator &
-#  &
