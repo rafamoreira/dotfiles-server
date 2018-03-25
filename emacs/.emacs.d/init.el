@@ -71,7 +71,9 @@
   :config (projectile-rails-global-mode))
 
 (use-package web-mode
-  :ensure t)
+  :ensure t
+  :config
+  (web-mode-toggle-current-element-highlight))
 
 (require 'web-mode)
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
@@ -81,6 +83,9 @@
 (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+
+
+
 
 (use-package ivy
 	     :ensure t)
@@ -129,6 +134,7 @@
 (global-hl-line-mode t) ;; hightlight the current line
 (electric-pair-mode 1) ;; auto add matching pair
 (show-paren-mode 1) ;; hightlight matching parens
+(setq show-paren-style 'mixed)
 (global-linum-mode 1) ;; show line numbers
 (column-number-mode 1) ;; show column number
 (save-place-mode 1) ;; remeber cursos position
