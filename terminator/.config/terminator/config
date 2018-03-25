@@ -1,8 +1,10 @@
 [global_config]
   enabled_plugins = LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
+  extra_styling = False
   handle_size = 1
   title_inactive_bg_color = "#000000"
   title_transmit_bg_color = "#000000"
+  window_state = maximise
 [keybindings]
   split_horiz = <Shift><Alt>s
   split_vert = <Shift><Alt>v
