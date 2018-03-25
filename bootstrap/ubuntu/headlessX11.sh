@@ -8,4 +8,5 @@ sudo apt install \
   vim-gtk	\
   emacs25	\
   stow		\
-  zsh
+  zsh     \
+  keychain
