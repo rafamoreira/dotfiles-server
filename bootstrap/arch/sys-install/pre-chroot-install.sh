@@ -1,30 +1,41 @@
 #!/bin/bash
 
-# # load the correct keymap
-# loadkeys us-acentos
+# load the correct keymap
+loadkeys us-acentos
 
-# # set time and date
-# timedatectl set-ntp true
+# set time and date
+timedatectl set-ntp true
 
-# # partitions ##### EXTRA CAREFUL ######
-# 
-# mkfs.fat -F32 /dev/nvme0n1p1
-# mkfs.ext4 /dev/nvme0n1p2
-# mkswap /dev/nvme0n1p3
-# swapon /dev/nvme0n1p3
+echo "danger ZONE "
+echo "vmware || physical? "
 
-# # mount 
-# mount /dev/nvme0n1p2 /mnt
-# mkdir /mnt/boot
-# mount /dev/nvme0n1p1 /mnt/boot
+read mtype
+if [ mtype = "vmware" ]
+then
+  # partitions ##### EXTRA CAREFUL ######
+  # vmware settings
+  mkfs.ext4 /dev/sda1
+  mount /dev/sda1 /mnt
+else
+  mkfs.fat -F32 /dev/nvme0n1p1
+  mkfs.ext4 /dev/nvme0n1p2
+  mkswap /dev/nvme0n1p3
+  swapon /dev/nvme0n1p3
 
-# # pacstrap
-# curl -o /etc/pacman.d/mirrorgen "https://www.archlinux.org/mirrorlist/?country=BR&protocol=http&protocol=https&ip_version=4&use_mirror_status=on"
-# sed -i 's/^#Server/Server/' /etc/pacman.d/mirrorgen
-# rankmirrors -n 6 /etc/pacman.d/mirrorgen > /etc/pacman.d/mirrorlist
-# pacstrap /mnt base base-devel
+  # mount 
+  mount /dev/nvme0n1p2 /mnt
+  mkdir /mnt/boot
+  mount /dev/nvme0n1p1 /mnt/boot
+fi
 
-# # fstab
-# genfstab -U /mnt >> /mnt/etc/fstab
+
+# pacstrap
+curl -o /etc/pacman.d/mirrorgen "https://www.archlinux.org/mirrorlist/?country=BR&protocol=http&protocol=https&ip_version=4&use_mirror_status=on"
+sed -i 's/^#Server/Server/' /etc/pacman.d/mirrorgen
+rankmirrors -n 6 /etc/pacman.d/mirrorgen > /etc/pacman.d/mirrorlist
+pacstrap /mnt base base-devel
+
+# fstab
+genfstab -U /mnt >> /mnt/etc/fstab
 
 arch-chroot /mnt
