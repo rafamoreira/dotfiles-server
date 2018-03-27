@@ -10,13 +10,21 @@ echo "danger ZONE "
 echo "vmware || physical? "
 
 read mtype
-if [ mtype = "vmware" ]
+if [ $mtype == "vmware" ]
 then
   # partitions ##### EXTRA CAREFUL ######
   # vmware settings
   mkfs.ext4 /dev/sda1
   mount /dev/sda1 /mnt
-else
+elif [ $mtype == "hyper-v" ]
+then
+	mkfs.fat -F32 /dev/sda1
+	mkfs.ext4 /dev/sda2
+	mount /dev/sda2 /mnt
+	mkdir /mnt/boot
+	mount /dev/sda1 /mnt/boot
+elif [ $mtype == "physical" ]
+then
   mkfs.fat -F32 /dev/nvme0n1p1
   mkfs.ext4 /dev/nvme0n1p2
   mkswap /dev/nvme0n1p3

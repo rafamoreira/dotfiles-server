@@ -14,14 +14,19 @@ systemctl enable dhcpcd.service
 mkinitcpio -p linux
 passwd
 pacman -Syu
-echo "vmware || physical? "
+echo "vmware || hyper-v || physical? "
 read mtype
-if [ mtype = "vmware" ]
+if [ $mtype == "vmware" ]
 then
   # vmware setup
   pacman -S vim grub 
   grub-install --target=i368-pc /dev/sda
-else
+elif [ $mtype == "hyper-v" ]
+then
+	pacman -S vim grub efibootmgr
+	grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=arch
+elif [ $mtype == "physical" ]
+then
   # phys machine setup
   pacman -S vim intel-ucode grub efibootmgr
   grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=arch
