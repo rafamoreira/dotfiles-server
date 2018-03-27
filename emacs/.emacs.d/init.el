@@ -5,7 +5,10 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    (quote
-    ("1b8d67b43ff1723960eb5e0cba512a2c7a2ad544ddb2533a90101fd1852b426e"))))
+    ("1b8d67b43ff1723960eb5e0cba512a2c7a2ad544ddb2533a90101fd1852b426e")))
+ '(package-selected-packages
+   (quote
+    (emmet-mode magithub magit ruby-end toggle-quotes neotree flycheck rubocop which-key web-mode use-package undo-tree try projectile-rails org-bullets counsel-projectile color-theme-sanityinc-tomorrow auto-complete ace-window))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -14,7 +17,14 @@
  '(aw-leading-char-face ((t (:inherit ace-jump-face-foreground :height 3.0)))))
 
 (setq inhibit-startup-message t) ;; do not exibit the inicial message
-(tool-bar-mode -1)
+
+(tool-bar-mode -1) ;; hide toolbar
+
+;; hide menu bar on terminal session
+(unless (display-graphic-p)
+  (menu-bar-mode -1))
+
+(setq visible-bell t)
 
 (require 'package)
 (setq package-enable-at-startup nil)
@@ -120,8 +130,6 @@
 
 (use-package undo-tree
   :ensure t)
-
-
 
 ;; ido configs
 ;;(setq indo-enable-flex-matching t)
