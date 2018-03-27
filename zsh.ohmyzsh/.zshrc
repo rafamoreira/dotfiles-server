@@ -7,7 +7,7 @@
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="candy"
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -73,4 +73,7 @@ alias startx="startx ~/.xinitrc $2"
 
 eval $(keychain --eval id_rsa)
 
-export DISPLAY=192.168.1.2:0.0
+# Janky way to determine if this is a VM and I should connect to host X11
+if [ -f ~/this-is-a-vm ]; then
+  export DISPLAY=192.168.1.2:0.0
+fi
