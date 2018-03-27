@@ -1,3 +1,3 @@
 #!/bin/bash
 sudo pacman -Syu
-sudo pacman -S stow keychain openssh
+sudo pacman -S stow keychain openssh wget

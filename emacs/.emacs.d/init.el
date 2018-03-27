@@ -8,7 +8,7 @@
     ("1b8d67b43ff1723960eb5e0cba512a2c7a2ad544ddb2533a90101fd1852b426e")))
  '(package-selected-packages
    (quote
-    (emmet-mode magithub magit ruby-end toggle-quotes neotree flycheck rubocop which-key web-mode use-package undo-tree try projectile-rails org-bullets counsel-projectile color-theme-sanityinc-tomorrow auto-complete ace-window))))
+    (fill-column-indicator column-marker emmet-mode magithub magit ruby-end toggle-quotes neotree flycheck rubocop which-key web-mode use-package undo-tree try projectile-rails org-bullets counsel-projectile color-theme-sanityinc-tomorrow auto-complete ace-window))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -221,8 +221,12 @@
   :ensure t
   :config (emmet-mode))
 
-(setq-default whitespace-line-column 80
-              whitespace-style
-              '(face lines-tail))
+(use-package fill-column-indicator
+  :ensure t)
 
-(add-hook 'prog-mode-hook #'whitespace-mode)
+(setq fci-rule-width 5)
+(setq fci-rule-color "red")
+(setq fci-rule-column 80)
+(define-globalized-minor-mode global-fci-mode fci-mode (lambda () (fci-mode 1)))
+(global-fci-mode 1)
+
