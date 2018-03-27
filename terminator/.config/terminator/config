@@ -1,6 +1,8 @@
 [global_config]
+  dbus = False
   enabled_plugins = LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
   extra_styling = False
+  geometry_hinting = True
   handle_size = 1
   title_inactive_bg_color = "#000000"
   title_transmit_bg_color = "#000000"

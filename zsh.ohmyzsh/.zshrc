@@ -72,3 +72,5 @@ eval "$(rbenv init -)"
 alias startx="startx ~/.xinitrc $2"
 
 eval $(keychain --eval id_rsa)
+
+export DISPLAY=192.168.1.2:0.0
