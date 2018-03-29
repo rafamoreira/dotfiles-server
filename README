@@ -1,16 +1,5 @@
-My dotfiles compilation
+A simplified fork of my original [dotfiles](https://github.com/rafamoreira/dotfiles) for use in servers.
 
-Branches are used for different configurations
+GNU stow is used to ln on the $HOME dir
 
-MASTER is a jack of all trades for linux desktop
-
-GITBASH is a very simple config set used on git bash on Windows
-
-On linux, GNU stow is used to link all to the $HOME dir
-
-On GITBASH there is a script to link the files on ~/
-
-Plug is used for vim extensions.
-
-zsh grml is used as a base zsh config
 
