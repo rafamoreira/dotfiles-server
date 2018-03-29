@@ -10,16 +10,9 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-endwise'
 Plug 'nathanaelkane/vim-indent-guides'
-Plug 'valloric/youcompleteme'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-ragtag'
-Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
-Plug 'tobyS/vmustache'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
 Plug 'felixhummel/setcolors.vim'
-Plug 'tpope/vim-eunuch'
-Plug 'w0rp/ale'
 
 " Initialize plugin system
 call plug#end()
